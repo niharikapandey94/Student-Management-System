@@ -75,6 +75,21 @@ public class CourseUi {
 	}
 	
 
+	
+	static void searchAvailablecourseUi(Scanner sc) {
+		
+		
+		CourseDao crDAO = new CourseDaoImpl();
+		try {
+			List<Course> crList =crDAO.AvailableCourse();
+			Consumer<Course> con = cr -> System.out.println("Course Id " + cr.getcId() + " Name " + cr.getCname()
+			+ "Course info " + cr.getcInfo() + " Course Fees " + cr.getFees()+" duration_in_years"+cr.getDuration_course_in_Y());
+			crList.forEach(con);
+		}catch(SomethingWentWrongException | NoRecordFoundException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
 	static void searchCoursebyFeesUi(Scanner sc) {
 		System.out.print("Enter course fee ");
 		int fee= sc.nextInt();

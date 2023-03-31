@@ -15,7 +15,7 @@ package com.masai.Ui;
 			
 			int choice = 0;
 			do {
-				System.out.println("1. Admin Login\n2.Student Login\n3.Student Sign Up\n4.update password\n0 Exits\nEnter selection");
+				System.out.println("1. Admin Login\n2.Student  Sign Up\n3.Student Login \n0 Exits\nEnter selection");
 				choice = sc.nextInt();
 				switch(choice) {
 					case 0:
@@ -27,12 +27,16 @@ package com.masai.Ui;
 					case 2:
 						StudentUi.addStudentUI(sc);
 						break;
-					case 3:
-						StudentUi.loginstudentUI(sc);
+				case 3:
+					StudentUi.loginstudentUI(sc);
+					break;
+//					case 4:
+//						StudentUi.UpdatepasswordUi(sc);
+//						break;
+					case 5:
+					
 						break;
-					case 4:
-						StudentUi.UpdatepasswordUi(sc);
-						break;
+						
 					default:
 						System.out.println("Invalid Selection, try again");
 				}

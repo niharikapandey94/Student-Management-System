@@ -82,20 +82,16 @@ public class AdminUi {
 		}
 	}
 	static void displayUserMenu() {
-		System.out.println("1. View All Products");
-		System.out.println("2. Purchase a Product");
-		System.out.println("3. View Order History");
+		System.out.println("1. Update Password");
+		System.out.println("2.Available course list");
+		System.out.println("3. Available Batches");
 		System.out.println("4. Update My Name");
 		System.out.println("5. Update My Password");
 		System.out.println("6. Delete My Account");
 		System.out.println("0. Logout");
-	}
 	
-	static void userLogin(Scanner sc) {
-//		if(!UserUI.login(sc))
-//			return;
-
-		//you are here means login is successful
+	}
+	static void StudentMenu(Scanner sc) {
 		int choice = 0;
 		do {
 			displayUserMenu();
@@ -103,13 +99,13 @@ public class AdminUi {
 			choice = sc.nextInt();
 			switch(choice) {
 				case 1:
-					//productUI.viewAllProducts();
+					StudentUi.UpdatepasswordUi(sc);
 					break;
 				case 2:
-//					OrderUI.purchase(sc);
+				CourseUi.searchAvailablecourseUi(sc); 
 					break;
 				case 3:
-					//orderUI.viewOrderDetails();
+					BatchUI.searchAvailablebatchUi(sc);
 					break;
 				case 4:
 					//userUI.updateNameOfUser();
@@ -127,5 +123,6 @@ public class AdminUi {
 			}
 		}while(choice != 0);
 	}
-
 }
+
+

@@ -15,7 +15,6 @@ public class BatchseatImpl implements Batchseat {
 	private String Coursename;
 	private int totalSeats;
 	private int seatsFilled;
-	
 	private LocalDate  startdate;
 	private LocalDate  endDate;
 	private  Boolean is_deleted ;
@@ -124,6 +123,23 @@ public class BatchseatImpl implements Batchseat {
 		this.endDate = endDate;
 		this.is_deleted = is_deleted;
 	}
+
+
+	public BatchseatImpl(int bid, String batchname, int cId, String coursename, int totalSeats, int seatsFilled,
+			LocalDate startdate, LocalDate endDate, Boolean is_deleted) {
+		super();
+		this.bid = bid;
+		Batchname = batchname;
+		this.cId = cId;
+		Coursename = coursename;
+		this.totalSeats = totalSeats;
+		this.seatsFilled = seatsFilled;
+		this.startdate = startdate;
+		this.endDate = endDate;
+		this.is_deleted = is_deleted;
+	}
+
+
 	
 	
 

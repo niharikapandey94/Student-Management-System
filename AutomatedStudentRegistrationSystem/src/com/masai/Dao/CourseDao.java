@@ -13,4 +13,5 @@ public interface CourseDao {
 	public List<Course> searchCoursebydurationrange(int Duration) throws SomethingWentWrongException, NoRecordFoundException;
 	public List<Course> searchCoursebyFeerange(int fees) throws SomethingWentWrongException, NoRecordFoundException;
 	public void updateCourseDetails(Course cr) throws SomethingWentWrongException;
+	public List<Course> AvailableCourse() throws SomethingWentWrongException, NoRecordFoundException;
 }

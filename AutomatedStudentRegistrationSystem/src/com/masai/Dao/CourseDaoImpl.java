@@ -39,6 +39,42 @@ public class CourseDaoImpl implements CourseDao  {
 		}
 	}
 	
+	public List<Course> AvailableCourse() throws SomethingWentWrongException, NoRecordFoundException{
+		Connection conn = null;
+		List<Course> list = new ArrayList<>();
+		try {
+			conn = DBUtils.getConnectionTodatabase();
+			String query = "SELECT * FROM course ";
+			PreparedStatement ps = conn.prepareStatement(query);
+		
+			
+			
+			
+			ResultSet rs = ps.executeQuery();
+			if(DBUtils.isResultSetEmpty(rs)) {
+				throw new NoRecordFoundException("No course found");
+			}
+			while(rs.next()) {
+				list.add(new CourseImpl(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5)));
+			}
+			
+		}catch(ClassNotFoundException | SQLException ex) {
+			throw new SomethingWentWrongException("Unable to update the record now, try again later");
+		}finally {
+			try {
+				DBUtils.closeConnection(conn);					
+			}catch(SQLException ex) {
+				
+			}
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
 	public List<Course> searchCoursebycoursename(String  Cname) throws SomethingWentWrongException, NoRecordFoundException{
 		Connection conn = null;
 		List<Course> list = new ArrayList<>();

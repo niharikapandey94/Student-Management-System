@@ -14,5 +14,6 @@ public interface BatchDao {
 	public List<Batchseat> searchbatchbyenddate(LocalDate lastDate) throws SomethingWentWrongException, NoRecordFoundException;
 	public List<Batchseat> searchbatchbycoursename(String Coursename) throws SomethingWentWrongException, NoRecordFoundException;
 	public void updateBatch(Batchseat bat) throws SomethingWentWrongException;
+	public List<Batchseat> AvailableBatch()throws SomethingWentWrongException, NoRecordFoundException;
 
 }

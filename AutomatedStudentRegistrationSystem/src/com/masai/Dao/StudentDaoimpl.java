@@ -17,10 +17,10 @@ public class StudentDaoimpl implements StudentDao {
 			conn = DBUtils.getConnectionTodatabase();
 			String query = "INSERT INTO Student (first_name, last_name, address, mobile_no, email, password) VALUES (?, ?, ?, ?, ?, ?)";;
 			PreparedStatement ps = conn.prepareStatement(query);
-			    ps.setString(1, stu.getFirsttName());
-		        ps.setString(2, stu.getLastName());
+			    ps.setString(1,stu.getFirsttName());
+		        ps.setString(2,stu.getLastName());
 		        ps.setString(3,stu.getAddress());
-		        ps.setInt(4,stu.getMobile_no());
+		        ps.setString(4,stu.getMobile_no());
 		        ps.setString(5,stu.getsEmail());
 		        ps.setString(6, stu.getsPassword());
 			
@@ -42,21 +42,20 @@ public class StudentDaoimpl implements StudentDao {
 		
 		try {
 			conn = DBUtils.getConnectionTodatabase();
-			String query = "SELECT * FROM student WHERE email=? and  password=? ";
+			String query = "SELECT * from student where email=? and password=?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1,email);
 			ps.setString(2,password);
-			
-			
 			ResultSet rs = ps.executeQuery();
 			if(DBUtils.isResultSetEmpty(rs)) {
-				throw new NoRecordFoundException("No Student found");
+				
+			throw new NoRecordFoundException("No Student found");
+				
 			}
 			if(rs.next()) {
-			login="Welcome"+rs.getString("firsttName");
+			login="login Suceessful";
 			}
-			
-		}catch(ClassNotFoundException | SQLException ex) {
+			}catch(ClassNotFoundException | SQLException ex) {
 			throw new SomethingWentWrongException("Unable to update the record now, try again later");
 		}finally {
 			try {
@@ -77,11 +76,11 @@ public class StudentDaoimpl implements StudentDao {
 		Connection conn = null;
 		try {
 			conn = DBUtils.getConnectionTodatabase();
-			String query = "update student set password=? where email=? and password=?";
+			String query = "update student set password=? where email=?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1, em.getsPassword());
 			ps.setString(2, em.getsEmail());
-			ps.setString(3, em.getsPassword());
+			
 		
 			
 			

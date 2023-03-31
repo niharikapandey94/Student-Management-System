@@ -42,11 +42,11 @@ public interface Student {
 	public void setsPassword(String sPassword);
 		
 
-	public int getMobile_no();
+	public String getMobile_no();
 	
 
 
-	public void setMobile_no(int mobile_no);
+	public void setMobile_no(String mobile_no) ;
 	
 	
 	

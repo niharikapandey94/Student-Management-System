@@ -17,19 +17,26 @@ import com.masai.exception.NoRecordFoundException;
 import com.masai.exception.SomethingWentWrongException;
 
 public class BatchDaoImpl implements BatchDao {
+	
+	
+	
+	
+	
+	
 	public void addbatch(Batchseat br) throws SomethingWentWrongException {
 		Connection conn = null;
 		try {
 			conn = DBUtils.getConnectionTodatabase();
-			String query = "INSERT INTO batch (Batchname, cId, Coursename, totalSeats,seatsFilled,startdate, endDate) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO batch (bid,Batchname, cId, Coursename, totalSeats,seatsFilled,startdate, endDate) VALUES (?, ?,?, ?, ?, ?, ?,?)";
 			PreparedStatement ps = conn.prepareStatement(query);
-			ps.setString(1, br.getBatchname());
-			ps.setInt(2,br.getcId() );
-			ps.setString(3, br.getCoursename());
-			ps.setInt(4, br.getTotalSeats());
-			ps.setInt(5, br.getSeatsFilled());
-			ps.setDate(6, Date.valueOf(br.getStartdate()));
-			ps.setDate(7, Date.valueOf(br.getEndDate()));
+			ps.setInt(1,br.getBid() );
+			ps.setString(2, br.getBatchname());
+			ps.setInt(3,br.getcId() );
+			ps.setString(4, br.getCoursename());
+			ps.setInt(5, br.getTotalSeats());
+			ps.setInt(6, br.getSeatsFilled());
+			ps.setDate(7, Date.valueOf(br.getStartdate()));
+			ps.setDate(8, Date.valueOf(br.getEndDate()));
 			
 			ps.executeUpdate();
 		}catch(ClassNotFoundException | SQLException ex) {
@@ -41,6 +48,40 @@ public class BatchDaoImpl implements BatchDao {
 				
 			}
 		}
+	}
+	
+	
+	public List<Batchseat>AvailableBatch() throws SomethingWentWrongException, NoRecordFoundException{
+		Connection conn = null;
+		List<Batchseat> list = new ArrayList<>();
+		try {
+			conn = DBUtils.getConnectionTodatabase();
+			String query = "SELECT * FROM batch";
+			PreparedStatement ps = conn.prepareStatement(query);
+		
+			
+			
+			
+			ResultSet rs = ps.executeQuery();
+			if(DBUtils.isResultSetEmpty(rs)) {
+				throw new NoRecordFoundException("No batch found");
+			}
+			while(rs.next()) {
+			list.add(new BatchseatImpl(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getDate(7).toLocalDate(),rs.getDate(8).toLocalDate(),false));
+			}
+			
+			
+			
+		}catch(ClassNotFoundException | SQLException ex) {
+			throw new SomethingWentWrongException("Unable to update the record now, try again later");
+		}finally {
+			try {
+				DBUtils.closeConnection(conn);					
+			}catch(SQLException ex) {
+				
+			}
+		}
+		return list;
 	}
 	
 	

@@ -21,7 +21,10 @@ public class BatchUI {
 	
 	
 	static void addBatchUI(Scanner sc) {
-	
+		
+		System.out.print("Enter batch id");
+		int  bid = sc.nextInt();
+		
 		System.out.print("Enter batch name");
 		String batchname = sc.next();
 		
@@ -56,7 +59,7 @@ public class BatchUI {
 		
 		
 		
-		Batchseat batch = new BatchseatImpl(batchname,cid,coursename,totalseats,seatsFilled,startdate, enddate,false);
+		Batchseat batch = new BatchseatImpl(bid,batchname,cid,coursename,totalseats,seatsFilled,startdate, enddate,false);
 		
 		BatchDao batchdao = new BatchDaoImpl();
 		
@@ -68,7 +71,22 @@ public class BatchUI {
 		}
 		
 	}
-
+   
+	
+static void searchAvailablebatchUi(Scanner sc) {
+		
+	BatchDao batchdao = new BatchDaoImpl();
+		
+		try {
+			List<Batchseat> brList =batchdao.AvailableBatch();
+			Consumer<Batchseat> con = cr -> System.out.println("Batch name " + cr.getBatchname() + " Course id" + cr.getcId()
+			+ "Course name " + cr.getCoursename() + " totalseats " + cr.getTotalSeats()+" seatFiiled"+cr.getSeatsFilled()+" startdate"+cr.getStartdate()+" enddate "+cr.getEndDate());
+			brList.forEach(con);
+			
+		}catch(SomethingWentWrongException | NoRecordFoundException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 	
 	static void searchbatchbybatchnameUi(Scanner sc) {
 		System.out.print("Enter batch name ");

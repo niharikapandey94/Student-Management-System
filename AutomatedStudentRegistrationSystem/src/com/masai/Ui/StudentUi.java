@@ -25,60 +25,67 @@ public class StudentUi {
 		System.out.print("Enter last name ");
 		String last_name = sc.next();
 		
-		System.out.print("Enter address ");
+		System.out.print("Enter address");
+		
 		String address = sc.next();
 		
 		System.out.print("Enter mobile_no");
-		int mobile_no = sc.nextInt();
+		String mobile_no = sc.next();
+		
 		
 		System.out.print("Enter email ");
 		String  email = sc.next();
-		
-		System.out.print("Enter password ");
+		System.out.print("Enter password");
 		String  password= sc.next();
 		
-		Student stu = new StudentImpl(first_Name,last_name,address,password,email,mobile_no,false);
+		
+		
+		
+		
+		
+		
+		
+		
+		Student stu = new StudentImpl(first_Name,last_name,address,mobile_no,email,password,false);
 		
 		StudentDao stuDAO = new StudentDaoimpl();
 		
 		try {
 			stuDAO.addRegister(stu);
-			System.out.println("Course added successfully");
+			System.out.println("Student added successfully");
+			 
 		}catch(SomethingWentWrongException | NoRecordFoundException ex) {
 			System.out.println(ex);
 		}
 		
 	}
 	
-public static void loginstudentUI(Scanner sc) {
-	
-
+    public static void loginstudentUI(Scanner sc) {
 	System.out.print("Enter email");
 	String email = sc.next();
 	System.out.print("Enter password");
 	String password= sc.next();
 	StudentDao StuDAO = new StudentDaoimpl();
-	
 	String result;
 		try {
-			result = StuDAO.loginstudent(email, password);
-			 System.out.println(result);
-		} catch (SomethingWentWrongException e) {
-			System.out.println("somthing wrong");
-			
-		} catch (NoRecordFoundException e) {
-			System.out.println("Invalid Credential");
-		}	
-	      
-	
+			result = StuDAO.loginstudent(email,password);
+			System.out.println(result);
+			 AdminUi.StudentMenu(sc);
+	} catch (SomethingWentWrongException e) {
+//			System.out.println("something wrong");
+		e.printStackTrace();
 		
-
-	
+	} catch (NoRecordFoundException e){
+			
+			System.out.println("Invalid Credential");
+		}
+	      
 }
      
      static void UpdatepasswordUi(Scanner sc) {
     	 System.out.print("Enter email");
     		String email = sc.next();
+    		
     		
     		System.out.print("Enter  new password ");
     		String password = sc.next();
@@ -92,8 +99,8 @@ public static void loginstudentUI(Scanner sc) {
     			stuDAO.Updatepassword(stu);
     			System.out.println("password updated successfully");
     		}catch(SomethingWentWrongException ex) {
-    			System.out.println(ex);
-    		}
+  			System.out.println(ex);
+  		}
     	 
      }
 
