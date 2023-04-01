@@ -42,6 +42,11 @@ public interface Studentrecord {
 	public String getGender();
 	
 	public void setGender(String gender) ;
-    
+	
+	
+	public Boolean getIs_deleted();
+		
+	public void setIs_deleted(Boolean is_deleted);
+		
 
 }

@@ -9,6 +9,7 @@ public class CourseImpl implements Course{
 	private String cInfo;
 	private int Duration_course_in_Y;
 	private  Boolean is_deleted ;
+	private BatchseatImpl batchseatImpl;
 	public CourseImpl(int cId, String cname, int fees, String cInfo, int duration_course_in_Y, Boolean is_deleted) {
 		super();
 		this.cId = cId;
@@ -26,6 +27,18 @@ public class CourseImpl implements Course{
 		this.fees = fees;
 		this.cInfo = cInfo;
 		Duration_course_in_Y = duration_course_in_Y;
+	}
+
+	
+
+	
+
+	public CourseImpl(String cname, String cInfo, int duration_course_in_Y, BatchseatImpl batchseatImpl) {
+		super();
+		Cname = cname;
+		this.cInfo = cInfo;
+		Duration_course_in_Y = duration_course_in_Y;
+		this.batchseatImpl = batchseatImpl;
 	}
 
 	public int getcId() {

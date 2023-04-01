@@ -1,7 +1,7 @@
 package com.masai.Dto;
 
 public class StudentImpl implements Student {
-	private int id;
+	
 	public int getId() {
 		return id;
 	}
@@ -17,10 +17,34 @@ public class StudentImpl implements Student {
 
 	
 	
+	public StudentImpl(String sEmail) {
+		super();
+		this.sEmail = sEmail;
+	}
+
+
+	public StudentImpl(String firsttName, String lastName, String address, String mobile_no, String sEmail,
+			String sPassword) {
+		super();
+		this.firsttName = firsttName;
+		this.lastName = lastName;
+		this.address = address;
+		this.mobile_no = mobile_no;
+		this.sEmail = sEmail;
+		this.sPassword = sPassword;
+	}
+
+
+
+
+
+
+	private int id;
 	private String firsttName;
 	private String lastName;
 	private String address;
 	private String mobile_no;
+	 private StudentrecordImpl studentrecordImpl;
 	public StudentImpl(int id, String firsttName, String lastName, String address, String mobile_no, String sEmail,
 			String sPassword, Boolean is_deleted) {
 		super();
@@ -133,6 +157,7 @@ public class StudentImpl implements Student {
 		this.sEmail = sEmail;
 		this.sPassword = sPassword;
 		this.is_deleted = is_deleted;
+		
 	}
 
 
@@ -145,6 +170,23 @@ public class StudentImpl implements Student {
 		this.sPassword = sPassword;
 	}
 
+
+	
+	public StudentImpl(String firsttName, String lastName, String address, String mobile_no,
+			 String sEmail, String sPassword,StudentrecordImpl studentrecordImpl) {
+		super();
+		this.firsttName = firsttName;
+		this.lastName = lastName;
+		this.address = address;
+		this.mobile_no = mobile_no;
+		
+		this.sEmail = sEmail;
+		this.sPassword = sPassword;
+		this.studentrecordImpl = studentrecordImpl;
+	}
+
+
+	
 
 	public Boolean getIs_deleted() {
 		return is_deleted;

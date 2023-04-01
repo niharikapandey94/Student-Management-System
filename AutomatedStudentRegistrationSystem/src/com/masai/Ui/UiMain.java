@@ -27,7 +27,7 @@ package com.masai.Ui;
 					case 2:
 						StudentUi.addStudentUI(sc);
 						break;
-				case 3:
+				    case 3:
 					StudentUi.loginstudentUI(sc);
 					break;
 //					case 4:

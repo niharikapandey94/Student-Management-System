@@ -56,7 +56,7 @@ public class BatchDaoImpl implements BatchDao {
 		List<Batchseat> list = new ArrayList<>();
 		try {
 			conn = DBUtils.getConnectionTodatabase();
-			String query = "SELECT * FROM batch";
+			String query = "SELECT * FROM batch where  totalseats!=seatsFilled";
 			PreparedStatement ps = conn.prepareStatement(query);
 		
 			

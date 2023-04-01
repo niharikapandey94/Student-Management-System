@@ -140,6 +140,14 @@ public class BatchseatImpl implements Batchseat {
 	}
 
 
+	public BatchseatImpl(String batchname) {
+		super();
+		Batchname = batchname;
+	}
+
+
+	
+
 	
 	
 

@@ -12,6 +12,14 @@ public class StudentrecordImpl implements Studentrecord {
     private double tenthPercentage;
     private double twelthPercentage;
     private String gender;
+    private  Boolean is_deleted;
+	
+	public Boolean getIs_deleted() {
+		return is_deleted;
+	}
+	public void setIs_deleted(Boolean is_deleted) {
+		this.is_deleted = is_deleted;
+	}
 	public StudentrecordImpl(int batchno, String batchname, int cid, int bid, String email, String fathername,
 			String mothername, double tenthPercentage, double twelthPercentage, String gender) {
 		super();
@@ -20,6 +28,28 @@ public class StudentrecordImpl implements Studentrecord {
 		this.cid = cid;
 		this.bid = bid;
 		this.email = email;
+		this.fathername = fathername;
+		this.mothername = mothername;
+		this.tenthPercentage = tenthPercentage;
+		this.twelthPercentage = twelthPercentage;
+		this.gender = gender;
+	}
+	public StudentrecordImpl(String batchname, int cid, int bid, String email, String fathername, String mothername,
+			double tenthPercentage, double twelthPercentage, String gender) {
+		super();
+		this.batchname = batchname;
+		this.cid = cid;
+		this.bid = bid;
+		this.email = email;
+		this.fathername = fathername;
+		this.mothername = mothername;
+		this.tenthPercentage = tenthPercentage;
+		this.twelthPercentage = twelthPercentage;
+		this.gender = gender;
+	}
+	public StudentrecordImpl(String fathername, String mothername, double tenthPercentage, double twelthPercentage,
+			String gender) {
+		super();
 		this.fathername = fathername;
 		this.mothername = mothername;
 		this.tenthPercentage = tenthPercentage;

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.masai.Dto.BatchseatImpl;
 import com.masai.Dto.Course;
 import com.masai.Dto.CourseImpl;
 import com.masai.exception.NoRecordFoundException;
@@ -44,7 +45,7 @@ public class CourseDaoImpl implements CourseDao  {
 		List<Course> list = new ArrayList<>();
 		try {
 			conn = DBUtils.getConnectionTodatabase();
-			String query = "SELECT * FROM course ";
+			String query = "select Course.Cname,Course.cInfo,Course.duration_in_years,batch.batchname from course inner join batch on course.cid=batch.cid where totalseats!=seatsFilled;";
 			PreparedStatement ps = conn.prepareStatement(query);
 		
 			
@@ -55,7 +56,7 @@ public class CourseDaoImpl implements CourseDao  {
 				throw new NoRecordFoundException("No course found");
 			}
 			while(rs.next()) {
-				list.add(new CourseImpl(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getInt(5)));
+				list.add(new CourseImpl(rs.getString(1),rs.getString(2),rs.getInt(3),new BatchseatImpl(rs.getString(4))));
 			}
 			
 		}catch(ClassNotFoundException | SQLException ex) {

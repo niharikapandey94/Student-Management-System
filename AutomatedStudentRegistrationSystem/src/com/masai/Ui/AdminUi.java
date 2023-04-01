@@ -19,6 +19,9 @@ public class AdminUi {
 		System.out.println("7. Search batch  by coursename");
 		System.out.println("8.Search batch by startdate ");
 		System.out.println("9. Search batch by endadate");
+		System.out.println("10. upadte batch");
+		System.out.println("11. viewstudent");
+		System.out.println("12. viewstudentwithbatch");
 	}
 	
 	static void adminMenu(Scanner sc) {
@@ -63,6 +66,14 @@ public class AdminUi {
 					BatchUI.updateBatchUI(sc);
 					break;	
 					
+				case 11:
+					StudentUi.viewStudent();
+					break;	
+				case 12:
+					StudentUi.viewStudentwithbatch();
+					break;	
+					
+					
 				default:
 					System.out.println("Invalid Selection, try again");
 			}
@@ -85,9 +96,9 @@ public class AdminUi {
 		System.out.println("1. Update Password");
 		System.out.println("2.Available course list");
 		System.out.println("3. Available Batches");
-		System.out.println("4. Update My Name");
-		System.out.println("5. Update My Password");
-		System.out.println("6. Delete My Account");
+		System.out.println("4. Register in the batch");
+		
+		System.out.println("5. Delete My Account");
 		System.out.println("0. Logout");
 	
 	}
@@ -108,15 +119,15 @@ public class AdminUi {
 					BatchUI.searchAvailablebatchUi(sc);
 					break;
 				case 4:
-					//userUI.updateNameOfUser();
+					StudentUi.RegisterstudentUI(sc);
 					break;
 				case 5:
-					//userUI.changePassword();
+					StudentUi.deleteUi(sc);
 					break;
-				case 6:
-					//userUI.deleteUser();
+			
+					
 				case 0:
-//					UserUI.logout();
+					StudentUi.Studentlogout();
 					break;
 				default:
 					System.out.println("Invalid Selection, try again");

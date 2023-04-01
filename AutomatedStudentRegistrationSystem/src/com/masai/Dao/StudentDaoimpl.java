@@ -36,13 +36,14 @@ public class StudentDaoimpl implements StudentDao {
 		}
 	}
 	
+	
 	public String loginstudent(String email, String password) throws SomethingWentWrongException, NoRecordFoundException{
 		String login="Invalid Credentials";
 		Connection conn = null;
 		
 		try {
 			conn = DBUtils.getConnectionTodatabase();
-			String query = "SELECT * from student where email=? and password=?";
+			String query = "SELECT * from student where email=? and password=? and is_deleted=false";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setString(1,email);
 			ps.setString(2,password);
@@ -95,6 +96,35 @@ public class StudentDaoimpl implements StudentDao {
 			}
 		}
 	}
-	
+	public void delete(Student student) throws SomethingWentWrongException {
+		Connection conn = null;
+		try {
+			
+			conn = DBUtils.getConnectionTodatabase();
+			String query = "UPDATE student SET is_deleted = true WHERE email = ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, student.getsEmail());
+			
+			
+			int numRowsAffected = ps.executeUpdate();
+			
+			
+			if (numRowsAffected == 0) {
+				throw new SomethingWentWrongException("Failed to delete student with email " + student.getsEmail());
+			}
+		} catch (ClassNotFoundException | SQLException ex) {
+			
+			throw new SomethingWentWrongException("Unable to delete student. Error: " + ex.getMessage(), ex);
+		} finally {
+			
+			try {
+				DBUtils.closeConnection(conn);
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		}
+	}
+
 	
 }
