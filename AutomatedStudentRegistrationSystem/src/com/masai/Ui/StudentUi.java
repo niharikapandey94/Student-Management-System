@@ -189,7 +189,7 @@ Studentrecord stu = new StudentrecordImpl(Batchname,cid,bid,email,father,Mother,
  		try {
  			List<Student> empList = studao.getStudentList();
  			Consumer<Student> con = emp -> System.out.println("firstname " + emp.getFirsttName() + " lastName " + emp.getLastName()
- 			+ " address " + emp.getAddress() + " mobile_no " + emp.getMobile_no()+" email"+emp.getsEmail());
+ 			+ " address " + emp.getAddress() + " mobile_no " + emp.getMobile_no()+" email"+emp.getsEmail()+"x"+emp.getStudentrecordImpl());
  			empList.forEach(con);
  		}catch(SomethingWentWrongException | NoRecordFoundException ex) {
  			System.out.println(ex.getMessage());

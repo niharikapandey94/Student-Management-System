@@ -63,6 +63,11 @@ public interface Student {
 
 	public void setId(int id);
 	
+	public StudentrecordImpl getStudentrecordImpl();
+	
+
+
+	public void setStudentrecordImpl(StudentrecordImpl studentrecordImpl);
 
 
 }

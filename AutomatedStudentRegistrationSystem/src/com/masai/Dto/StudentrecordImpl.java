@@ -47,6 +47,7 @@ public class StudentrecordImpl implements Studentrecord {
 		this.twelthPercentage = twelthPercentage;
 		this.gender = gender;
 	}
+	
 	public StudentrecordImpl(String fathername, String mothername, double tenthPercentage, double twelthPercentage,
 			String gender) {
 		super();
@@ -55,6 +56,11 @@ public class StudentrecordImpl implements Studentrecord {
 		this.tenthPercentage = tenthPercentage;
 		this.twelthPercentage = twelthPercentage;
 		this.gender = gender;
+	}
+	@Override
+	public String toString() {
+		return "StudentrecordImpl [fathername=" + fathername + ", mothername=" + mothername + ", tenthPercentage="
+				+ tenthPercentage + ", twelthPercentage=" + twelthPercentage + ", gender=" + gender + "]";
 	}
 	public int getBatchno() {
 		return batchno;

@@ -44,7 +44,21 @@ public class StudentImpl implements Student {
 	private String lastName;
 	private String address;
 	private String mobile_no;
-	 private StudentrecordImpl studentrecordImpl;
+ public StudentrecordImpl getStudentrecordImpl() {
+		return studentrecordImpl;
+	}
+
+
+	public void setStudentrecordImpl(StudentrecordImpl studentrecordImpl) {
+		this.studentrecordImpl = studentrecordImpl;
+	}
+
+
+
+
+
+
+private StudentrecordImpl studentrecordImpl;
 	public StudentImpl(int id, String firsttName, String lastName, String address, String mobile_no, String sEmail,
 			String sPassword, Boolean is_deleted) {
 		super();
